@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panda Login</title>
+    <link rel="stylesheet" href="{%static 'assets/style.css' %}">
+</head>
+<body>
+    <nav>
+        <div class="nav">
+        <div class="brand">Logo</div>
+        <button>Register</button>
+    </div>
+    </nav>
+    <div class="container">
+        <form action="" method="POST">
+            {% csrf_token %}
+
+            <label for="username">Enter your Username</label>
+            <input type="text" id="username" name="username" placeholder="username">
+            <label for="password">Enter Passord</label>
+            <input type="text" id="password" name="password" placeholder="password">
+            <button>Login</button>
+            <p>Don't have a account<a href="registration.html">Register</a></p>
+        </form>
+        <div class="ear-l"></div>
+        <div class="ear-r"></div>
+        <div class="panda-face">
+            <div class="blush-l"></div>
+            <div class="blush-r"></div>
+            <div class="eye-l">
+                <div class="eyeball-l"></div>
+            </div>
+            <div class="eye-r">
+                <div class="eyeball-r"></div>
+            </div>
+            <div class="nose"></div>
+            <div class="mouth"></div>
+        </div>
+        <div class="hand-l"></div>
+        <div class="hand-r"></div>
+        <div class="paw-l"></div>
+        <div class="paw-r"></div>
+    </div>
+
+    <script src="{% static 'js/file.js' %}"></script>
+</body>
+</html>

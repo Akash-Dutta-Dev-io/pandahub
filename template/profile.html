@@ -1,0 +1,69 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - {{user_profile.user.username}}</title>
+    <link rel="stylesheet" href="{% static 'assets/profile.css' %}">
+</head>
+
+<body>
+    <div class="header_wrapper">
+        <header></header>
+        <div class="cols_container">
+            <div class="left_col">
+                <div class="img_container">
+                    <img src="{{user_profile.profileimg.url}}" alt="">
+                    <span></span>
+                </div>
+                <h2>{{user_profile.user.username}}</h2>
+                <p>{{user_profile.bio}}</p>
+                <p>akash@gmail.com</p>
+
+                <ul class="about">
+                    <li><span>4,023</span>Followers</li>
+                    <li><span>84</span>Following</li>
+                    <li><span>200,000</span>Attractions</li>
+                </ul>
+
+                <div class="content">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium porro nesciunt
+                        quis est reiciendis molestiae omnis ad mollitia quidem labore natus aliquid rem officiis quos
+                        aut
+                        dolore, culpa illo. Voluptates.</p>
+
+                    <ul>
+                        <li>facebook</li>
+                        <li>twiter</li>
+                        <li>instagram</li>
+                        <li>youtube</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="right_col">
+                <nav>
+                    <ul>
+                        <li><a href="#">Photos</a></li>
+                        <li><a href="#">Galaries</a></li>
+                        <li><a href="#">Groups</a></li>
+                        <li><a href="#">About</a></li>
+                    </ul>
+                    <button>Follow</button>
+                </nav>
+
+                <div class="photos">
+                    <img src="img/DSC_7691.JPG" alt="">
+                    <img src="img/DSC_7691.JPG" alt="">
+                    <img src="img/DSC_7691.JPG" alt="">
+                    <img src="img/DSC_7691.JPG" alt="">
+                    <img src="img/DSC_7691.JPG" alt="">
+                    <img src="img/DSC_7691.JPG" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,231 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main</title>
+    <link rel="stylesheet" href="{% static 'assets/main.css' %}">
+
+
+</head>
+<style>
+    .upload {
+        position:absolute;
+        right:180px;
+        display: block;
+        border: 1px solid black;
+        
+        /* height: 100%; */
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .nav-items{
+        display: flex;
+        /* align-items: center; */
+        justify-content: space-between;
+    }
+</style>
+
+<body>
+    <nav class="navbar">
+        <div class="nav-wrapper">
+            <img src="{%static 'img/pngegg.png' %}" class="brand-img" alt="">
+            <input type="text" class="search-box" placeholder="Search">
+            <div class="nav-items">
+                <form action="upload" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <input type="button" value="Upload pics/videos" onclick="toggleP()">
+                    <div id="info" class="upload" style="display: none;">
+                        <input type="file" name="image">
+                        <textarea name="caption" cols="30" rows="10" placeholder="caption..."></textarea>
+                        <button type="submit">upload</button>
+                    </div>
+                </form>
+                <a href="logout">logout</a>
+                <div class="icon user-profile"><img src="{{user_profile.profileimg.url}}" style="width: 22px;
+                    border-radius: 50%;
+                    background-size: cover;"></div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="main">
+        <div class="wrapper">
+            <div class="left-col">
+                <div class="status-wrapper">
+                    <div class="status-card">
+                        <div class="profile-pic"><img src="{% static 'img/20200422_150704.jpg' %}"></div>
+                        <p class="username">user_name_1</p>
+                    </div>
+                    <div class="status-card">
+                        <div class="profile-pic"><img src="{% static 'img/20200422_150704.jpg' %}"></div>
+                        <p class="username">user_name_1</p>
+                    </div>
+                    <div class="status-card">
+                        <div class="profile-pic"><img src="{% static 'img/20200422_150704.jpg' %}"></div>
+                        <p class="username">user_name_1</p>
+                    </div>
+                    <div class="status-card">
+                        <div class="profile-pic"><img src="{% static 'img/20200422_150704.jpg' %}"></div>
+                        <p class="username">user_name_1</p>
+                    </div>
+                    <div class="status-card">
+                        <div class="profile-pic"><img src="{% static 'img/20200422_150704.jpg' %}"></div>
+                        <p class="username">user_name_1</p>
+                    </div>
+                    <div class="status-card">
+                        <div class="profile-pic"><img src="{% static 'img/20200422_150704.jpg' %}"></div>
+                        <p class="username">user_name_1</p>
+                    </div>
+                    <div class="status-card">
+                        <div class="profile-pic"><img src="{% static 'img/20200422_150704.jpg' %}"></div>
+                        <p class="username">user_name_1</p>
+                    </div>
+                    <div class="status-card">
+                        <div class="profile-pic"><img src="{% static 'img/20200422_150704.jpg' %}"></div>
+                        <p class="username">user_name_1</p>
+                    </div>
+                    <div class="status-card">
+                        <div class="profile-pic"><img src="{% static 'img/20200422_150704.jpg' %}"></div>
+                        <p class="username">user_name_1</p>
+                    </div>
+                    <div class="status-card">
+                        <div class="profile-pic"><img src="{% static 'img/20200422_150704.jpg' %}"></div>
+                        <p class="username">user_name_1</p>
+                    </div>
+                    <div class="status-card">
+                        <div class="profile-pic"><img src="{% static 'img/20200422_150704.jpg' %}"></div>
+                        <p class="username">user_name_1</p>
+                    </div>
+                    <div class="status-card">
+                        <div class="profile-pic"><img src="{% static 'img/20200422_150704.jpg' %}"></div>
+                        <p class="username">user_name_1</p>
+                    </div>
+                    <div class="status-card">
+                        <div class="profile-pic"><img src="{% static 'img/20200422_150704.jpg' %}"></div>
+                        <p class="username">user_name_1</p>
+                    </div>
+                </div>
+                {% for post in posts %}
+                <div class="post">
+                    <div class="info">
+                        <div class="user">
+                            <div class="profile-pic"><img src="{% static 'img/20200422_150704.jpg' %}" alt=""></div>
+                            <p class="username">{{post.user}}</p>
+                        </div>
+                        <div class="options">|||</div>
+                    </div>
+                    <img src="{{post.image.url}}" class="post-image">
+                    <div class="post-content">
+                        <div class="reaction-wrapper">
+                            <a href="/like-post?post_id={{post.id}}"><img src="{% static 'img/pngegg.png' %}" class="icon" alt=""></a>
+                            <img src="img/pngegg.png" class="icon" alt="">
+                            <img src="img/pngegg.png" class="icon" alt="">
+                            <img src="img/pngegg.png" class="save icon" alt="">
+                        </div>
+                        {% if post.no_of_likes == 0 %}
+                        <p><b>No Likes</b></p>
+                        {% elif post.no_of_likes == 1 %}
+                        <p class="likes">{{post.no_of_likes}} Like</p>
+                        {% else %}
+                        <p class="likes">{{post.no_of_likes}} Likes</p>
+                        {% endif %}
+                        <p class="description"><span>{{post.user}} </span> {{post.caption}}</p>
+                        <p class="post-time">2 minutes ago</p>
+                    </div>
+                    <div class="comment-wrapper">
+                        <img src="{% static 'img/pngegg.png' %}" class="icon">
+                        <input type="text" class="comment-box" placeholder="Add a comment">
+                        <button class="comment-btn">Post</button>
+                    </div>
+                </div>
+                {% endfor %}
+             
+
+            </div>
+            <div class="right-col">
+                <div class="profile-card">
+                    <div class="profile-pic">
+                        <img src="img/20200422_150704.jpg" alt="">
+                    </div>
+                    <div>
+                        <p class="username">Akash_9614</p>
+                        <p class="sub-text">Akash Dutta</p>
+
+                    </div>
+                    <button class="action-btn">Switch</button>
+                </div>
+                <p class="suggestion-text">Suggestions for you</p>
+                <div class="profile-card">
+                    <div class="profile-pic">
+                        <img src="img/20200422_150704.jpg" alt="">
+                    </div>
+                    <div>
+                        <p class="username">Akash_9614</p>
+                        <p class="sub-text">Followed by User</p>
+
+                    </div>
+                    <button class="action-btn">Follow</button>
+                </div>
+
+                <div class="profile-card">
+                    <div class="profile-pic">
+                        <img src="img/20200422_150704.jpg" alt="">
+                    </div>
+                    <div>
+                        <p class="username">Akash_9614</p>
+                        <p class="sub-text">Akash Dutta</p>
+
+                    </div>
+                    <button class="action-btn">Switch</button>
+                </div>
+
+                <div class="profile-card">
+                    <div class="profile-pic">
+                        <img src="img/20200422_150704.jpg" alt="">
+                    </div>
+                    <div>
+                        <p class="username">Akash_9614</p>
+                        <p class="sub-text">Akash Dutta</p>
+
+                    </div>
+                    <button class="action-btn">Switch</button>
+                </div>
+
+                <div class="profile-card">
+                    <div class="profile-pic">
+                        <img src="img/20200422_150704.jpg" alt="">
+                    </div>
+                    <div>
+                        <p class="username">Akash_9614</p>
+                        <p class="sub-text">Akash Dutta</p>
+
+                    </div>
+                    <button class="action-btn">Switch</button>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function toggleP() {
+            let div = document.getElementById("info");
+            if (div.style.display === "none") {
+                div.style.display = "block";
+            } else {
+                div.style.display = "none";
+            }
+        }
+    </script>
+
+
+
+
+</body>
+
+</html>

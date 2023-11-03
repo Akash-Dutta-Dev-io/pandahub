@@ -54,12 +54,16 @@
                 </nav>
 
                 <div class="photos">
+                    <!-- <img src="img/DSC_7691.JPG" alt="">
                     <img src="img/DSC_7691.JPG" alt="">
                     <img src="img/DSC_7691.JPG" alt="">
                     <img src="img/DSC_7691.JPG" alt="">
                     <img src="img/DSC_7691.JPG" alt="">
-                    <img src="img/DSC_7691.JPG" alt="">
-                    <img src="img/DSC_7691.JPG" alt="">
+                    <img src="img/DSC_7691.JPG" alt=""> -->
+                    {% for post in user_posts %}
+                    <img src="{{post.image.url}}" alt="">
+                    {% endfor %}
+
                 </div>
             </div>
         </div>

@@ -135,7 +135,7 @@
                         <p class="likes">{{post.no_of_likes}} Likes</p>
                         {% endif %}
                         <p class="description"><span>{{post.user}} </span> {{post.caption}}</p>
-                        <p class="post-time">2 minutes ago</p>
+                        <p class="post-time">Posted {{ post.created_at|timesince }} ago</p>
                     </div>
                     <div class="comment-wrapper">
                         <img src="{% static 'img/pngegg.png' %}" class="icon">

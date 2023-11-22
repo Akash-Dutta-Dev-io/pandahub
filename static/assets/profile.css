@@ -83,6 +83,7 @@ a{
     flex-direction: column;
     color: #818181;
     font-size: 0.9rem;
+    /* margin: 0 10px; */
 }
 
 .header_wrapper .cols_container .left_col .about li span{
@@ -136,15 +137,6 @@ a{
     color: #818181;
 }
 
-.header_wrapper .cols_container .right_col nav button{
-    background: #0091ff;
-    color: #fff;
-    border: none;
-    padding: 10px 25px;
-    border-radius: 4px;
-    cursor: pointer;
-    margin-top: 20px;
-}
 
 .header_wrapper .cols_container .right_col nav ul li:nth-child(1) a{
     color: #1d1d1d;

@@ -7,6 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile - {{user_profile.user.username}}</title>
     <link rel="stylesheet" href="{% static 'assets/profile.css' %}">
+    <style>
+        .about li {
+            display: flex;
+            justify-content: space-between;
+        }
+    </style>
 </head>
 
 <body>
@@ -19,40 +25,48 @@
                     <span></span>
                 </div>
                 <h2>{{user_profile.user.username}}</h2>
-                <p>{{user_profile.bio}}</p>
-                <p>akash@gmail.com</p>
 
-                <ul class="about">
-                    <li><span>4,023</span>Followers</li>
-                    <li><span>84</span>Following</li>
-                    <li><span>200,000</span>Attractions</li>
-                </ul>
+                <form action="/follow" method="POST">
+                    {% csrf_token %}
+                    <ul class="about">
 
-                <div class="content">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium porro nesciunt
-                        quis est reiciendis molestiae omnis ad mollitia quidem labore natus aliquid rem officiis quos
-                        aut
-                        dolore, culpa illo. Voluptates.</p>
+                        <li style="margin: 0 0 0 10px;"><span>{{user_followers}}</span>Followers</li>
+                        <li style="margin: 0 10px;"><span>{{user_following}}</span>Following</li>
+                        <input type="hidden" value="{{user.username}}" name="follower">
+                        <input type="hidden" value="{{user_object.username}}" name="user">
 
-                    <ul>
-                        <li>facebook</li>
-                        <li>twiter</li>
-                        <li>instagram</li>
-                        <li>youtube</li>
+                        <li><span>
+                                {% if user_post_length == 0 %}
+                                <p><b style="color: #000;">0</b></p>
+                                {% elif user_post_length == 1 %}
+                                <p><b style="color: #000;">{{user_post_length}}</b></p>
+                                {% else %}
+                                <p><b style="color: #000;">{{user_post_length}}</b></p>
+                                {% endif %}
+                            </span>Posts</li>
+
                     </ul>
-                </div>
+
+                    <div class="content">
+                        <p>{{user_profile.bio}}</p>
+                    </div>
             </div>
             <div class="right_col">
                 <nav>
                     <ul>
                         <li><a href="#">Photos</a></li>
-                        <li><a href="#">Galaries</a></li>
+                        <!-- <li><a href="#">Galaries</a></li>
                         <li><a href="#">Groups</a></li>
-                        <li><a href="#">About</a></li>
+                        <li><a href="#">About</a></li> -->
                     </ul>
-                    <button>Follow</button>
-                </nav>
+                    {% if user_object.username == user.username %}
+                    <a href="/settings" data-ripple="">Account Settings</a>
+                    {% else %}
+                    <button type="submit" data-ripple="">{{button_text}}</button>
+                    {% endif %}
 
+                </nav>
+                </form>
                 <div class="photos">
                     <!-- <img src="img/DSC_7691.JPG" alt="">
                     <img src="img/DSC_7691.JPG" alt="">

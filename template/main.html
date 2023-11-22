@@ -13,17 +13,17 @@
 </head>
 <style>
     .upload {
-        position:absolute;
-        right:180px;
+        position: absolute;
+        right: 180px;
         display: block;
         border: 1px solid black;
-        
+
         /* height: 100%; */
         width: 100%;
         margin-top: 10px;
     }
 
-    .nav-items{
+    .nav-items {
         display: flex;
         /* align-items: center; */
         justify-content: space-between;
@@ -34,7 +34,11 @@
     <nav class="navbar">
         <div class="nav-wrapper">
             <img src="{%static 'img/pngegg.png' %}" class="brand-img" alt="">
-            <input type="text" class="search-box" placeholder="Search">
+            <form action="/search" method="post">
+                {% csrf_token %}
+                <input type="text" name="username" class="search-box" placeholder="Search"> &nbsp; &nbsp; &nbsp; &nbsp;
+                <button type="submit" style="margin-left: 400px; padding: 3px 3px;">Search</button>
+            </form>
             <div class="nav-items">
                 <form action="upload" method="post" enctype="multipart/form-data">
                     {% csrf_token %}
@@ -45,7 +49,7 @@
                         <button type="submit">upload</button>
                     </div>
                 </form>
-                <a href="logout">logout</a>
+                &nbsp; &nbsp; <a href="logout">logout</a> &nbsp; 
                 <div class="icon user-profile"><img src="{{user_profile.profileimg.url}}" style="width: 22px;
                     border-radius: 50%;
                     background-size: cover;"></div>
@@ -56,7 +60,7 @@
     <section class="main">
         <div class="wrapper">
             <div class="left-col">
-                <div class="status-wrapper">
+                <!-- <div class="status-wrapper">
                     <div class="status-card">
                         <div class="profile-pic"><img src="{% static 'img/20200422_150704.jpg' %}"></div>
                         <p class="username">user_name_1</p>
@@ -109,23 +113,25 @@
                         <div class="profile-pic"><img src="{% static 'img/20200422_150704.jpg' %}"></div>
                         <p class="username">user_name_1</p>
                     </div>
-                </div>
+                </div> -->
                 {% for post in posts %}
                 <div class="post">
                     <div class="info">
                         <div class="user">
                             <div class="profile-pic"><img src="{% static 'img/20200422_150704.jpg' %}" alt=""></div>
-                            <p class="username">{{post.user}}</p>
+                            <p class="username"><a href="/profile/{{post.user}}"
+                                    style="text-decoration: none; color: black;">{{post.user}}</p></a>
                         </div>
                         <div class="options">|||</div>
                     </div>
                     <img src="{{post.image.url}}" class="post-image">
                     <div class="post-content">
                         <div class="reaction-wrapper">
-                            <a href="/like-post?post_id={{post.id}}"><img src="{% static 'img/pngegg.png' %}" class="icon" alt=""></a>
+                            <a href="/like-post?post_id={{post.id}}"><img src="{% static 'img/pngegg.png' %}"
+                                    class="icon" alt=""></a>
+                            <!-- <img src="img/pngegg.png" class="icon" alt="">
                             <img src="img/pngegg.png" class="icon" alt="">
-                            <img src="img/pngegg.png" class="icon" alt="">
-                            <img src="img/pngegg.png" class="save icon" alt="">
+                            <img src="img/pngegg.png" class="save icon" alt=""> -->
                         </div>
                         {% if post.no_of_likes == 0 %}
                         <p><b>No Likes</b></p>
@@ -144,11 +150,11 @@
                     </div>
                 </div>
                 {% endfor %}
-             
+
 
             </div>
             <div class="right-col">
-                <div class="profile-card">
+                <!-- <div class="profile-card">
                     <div class="profile-pic">
                         <img src="img/20200422_150704.jpg" alt="">
                     </div>
@@ -158,33 +164,24 @@
 
                     </div>
                     <button class="action-btn">Switch</button>
-                </div>
+                </div> -->
                 <p class="suggestion-text">Suggestions for you</p>
+                {% for suggestion in suggestions_username_profile_list %}
                 <div class="profile-card">
                     <div class="profile-pic">
-                        <img src="img/20200422_150704.jpg" alt="">
+                        <img src="{{suggestion.profileimg.url}}" alt="">
                     </div>
                     <div>
-                        <p class="username">Akash_9614</p>
-                        <p class="sub-text">Followed by User</p>
+                        <p class="username"><a href="/profile/{{suggestion.user}}"  style="text-decoration: none; color: black;">@{{suggestion.user}}</a></p>
+                        <p class="sub-text">{{suggestion.bio}}</p>
+                        <p class="sub-text">{{suggestion.location}}</p>
 
                     </div>
-                    <button class="action-btn">Follow</button>
+                    <a href="/profile/{{suggestion.user}}" class="action-btn" style="text-decoration: none; margin: 10px;">View User</a>
                 </div>
+                {% endfor %}
 
-                <div class="profile-card">
-                    <div class="profile-pic">
-                        <img src="img/20200422_150704.jpg" alt="">
-                    </div>
-                    <div>
-                        <p class="username">Akash_9614</p>
-                        <p class="sub-text">Akash Dutta</p>
-
-                    </div>
-                    <button class="action-btn">Switch</button>
-                </div>
-
-                <div class="profile-card">
+                <!-- <div class="profile-card">
                     <div class="profile-pic">
                         <img src="img/20200422_150704.jpg" alt="">
                     </div>
@@ -207,6 +204,18 @@
                     </div>
                     <button class="action-btn">Switch</button>
                 </div>
+
+                <div class="profile-card">
+                    <div class="profile-pic">
+                        <img src="img/20200422_150704.jpg" alt="">
+                    </div>
+                    <div>
+                        <p class="username">Akash_9614</p>
+                        <p class="sub-text">Akash Dutta</p>
+
+                    </div>
+                    <button class="action-btn">Switch</button>
+                </div> -->
 
             </div>
         </div>

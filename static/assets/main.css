@@ -15,7 +15,7 @@ body{
     font-family: 'roboto', sans-serif;
 }
 
-.navbar{
+/* .navbar{
     position: fixed;
     top: left;
     left: 0;
@@ -37,6 +37,25 @@ body{
     display: flex;
     justify-content: space-between;
     align-items: center;
+} */
+
+.navbar{
+    width: 100%;
+    height: 50px;
+    background-color: #fff;
+    border-bottom: 1px solid #dfdfdf;
+    display: flex;
+    justify-content: center;
+    padding: 5px 0;
+}
+
+.nav-wrapper{
+    width: 90%;
+    max-width: 1200px;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .brand-img{
@@ -44,22 +63,38 @@ body{
     margin-top: 5px;
 }
 
+.search-bar form{
+    /* position: absolute;
+    top: 16px;
+    left: 490px; */
+    display: flex;
+    align-items: center;
+    column-gap: 5px;
+}
+
 .search-box{
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 200px;
-    height: 25px;
-    background-color: #fafafa;
-    border: none;
-    border-radius: 10px;
-    color: rgba(0, 0,0,0.5);
+    border: 3px solid gold;
+    border-radius: 20px;
+    height: 40px;
+    width: 360px;
+    background-color: rgba(219, 82, 82, 0.507);
     text-align: center;
-    text-transform: capitalize;
+    font-size: 1rem;
+}
+
+.search-box:hover{
+    border-color: green;
 }
 
 .search-box::placeholder{
     color: rgba(0, 0,0,0.5);
+}
+
+.upload-btn{
+    border-radius: 15px;
+    background-color: magenta;
+    padding: 8px 20px;
+    border: none;
 }
 
 .nav-items{
@@ -68,7 +103,7 @@ body{
 }
 
 .icon{
-    height: 100%;
+    height: 46px;
     cursor: pointer;
     margin: 0 10px;
     display: inline-block;
@@ -271,7 +306,7 @@ body{
 }
 
 .reaction-wrapper .icon{
-    height: 25px;
+    height: 46px;
     margin: 0;
     margin-right: 20px;
 }

@@ -11,8 +11,8 @@
 <body>
   <nav>
     <div class="nav">
-    <div class="brand">Logo</div>
-    <a href="{% url 'signin.html' %}" class="action-btn">Login</a>
+      <img src="{%static 'img/logo.png' %}" class="brand-img" style="height: 41px;">
+    <a href="{% url 'signin.html' %}" class="action-btn" style="text-decoration: none; color: aliceblue;">Login</a>
 </div>
 </nav>
 
@@ -27,7 +27,7 @@
             <input type="text" id="Re-password" name="password2" placeholder="Confirm Password">
             <button>Login</button>
             
-            <p style="margin-top: 6px;">Already have a account &nbsp;<a href="{% url 'signin.html' %}" >Login</a></p>
+            <p style="margin-top: 6px;">Already have an account &nbsp;<a href="{% url 'signin.html' %}" style="text-decoration: none; ">Login</a></p>
         </form>
         <div class="ear-l"></div>
         <div class="ear-r"></div>

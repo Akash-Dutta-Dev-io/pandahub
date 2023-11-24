@@ -12,15 +12,17 @@
 
 </head>
 <style>
-    .upload {
-        position: absolute;
-        right: 180px;
-        display: block;
+    .upload, input, textarea{
         border: 1px solid black;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        
+    }
 
-        /* height: 100%; */
-        width: 100%;
-        margin-top: 10px;
+    .upload button{
+        display: flex;
+        justify-content: center;
     }
 
     .nav-items {
@@ -33,23 +35,25 @@
 <body>
     <nav class="navbar">
         <div class="nav-wrapper">
-            <img src="{%static 'img/pngegg.png' %}" class="brand-img" alt="">
+            <img src="{%static 'img/logo.png' %}" class="brand-img" style="height: 43px;">
+            <div class="search-bar">
             <form action="/search" method="post">
                 {% csrf_token %}
-                <input type="text" name="username" class="search-box" placeholder="Search"> &nbsp; &nbsp; &nbsp; &nbsp;
-                <button type="submit" style="margin-left: 400px; padding: 3px 3px;">Search</button>
+                <input type="text" name="username" class="search-box" placeholder="Search">
+                <button type="submit">Search</button>
             </form>
+        </div>
             <div class="nav-items">
                 <form action="upload" method="post" enctype="multipart/form-data">
                     {% csrf_token %}
-                    <input type="button" value="Upload pics/videos" onclick="toggleP()">
+                    <input type="button" value="Upload pics/videos" class="upload-btn" onclick="toggleP()">
                     <div id="info" class="upload" style="display: none;">
                         <input type="file" name="image">
-                        <textarea name="caption" cols="30" rows="10" placeholder="caption..."></textarea>
-                        <button type="submit">upload</button>
+                        <textarea name="caption" cols="30" rows="10" placeholder="Caption..."></textarea>
+                        <button type="submit">Upload</button>
                     </div>
                 </form>
-                &nbsp; &nbsp; <a href="logout">logout</a> &nbsp; 
+                &nbsp; &nbsp; <a href="logout" style="text-decoration: none; color: black; font-weight:bold ;">Logout</a> &nbsp; 
                 <div class="icon user-profile"><img src="{{user_profile.profileimg.url}}" style="width: 22px;
                     border-radius: 50%;
                     background-size: cover;"></div>
@@ -118,16 +122,16 @@
                 <div class="post">
                     <div class="info">
                         <div class="user">
-                            <div class="profile-pic"><img src="{% static 'img/20200422_150704.jpg' %}" alt=""></div>
+                            <div class="profile-pic"><img src="{{post.profileimg.url}}" alt=""></div>
                             <p class="username"><a href="/profile/{{post.user}}"
                                     style="text-decoration: none; color: black;">{{post.user}}</p></a>
                         </div>
-                        <div class="options">|||</div>
+                    
                     </div>
                     <img src="{{post.image.url}}" class="post-image">
                     <div class="post-content">
                         <div class="reaction-wrapper">
-                            <a href="/like-post?post_id={{post.id}}"><img src="{% static 'img/pngegg.png' %}"
+                            <a href="/like-post?post_id={{post.id}}"><img src="{% static 'img/like.png' %}"
                                     class="icon" alt=""></a>
                             <!-- <img src="img/pngegg.png" class="icon" alt="">
                             <img src="img/pngegg.png" class="icon" alt="">
@@ -143,11 +147,11 @@
                         <p class="description"><span>{{post.user}} </span> {{post.caption}}</p>
                         <p class="post-time">Posted {{ post.created_at|timesince }} ago</p>
                     </div>
-                    <div class="comment-wrapper">
+                    <!-- <div class="comment-wrapper">
                         <img src="{% static 'img/pngegg.png' %}" class="icon">
                         <input type="text" class="comment-box" placeholder="Add a comment">
                         <button class="comment-btn">Post</button>
-                    </div>
+                    </div> -->
                 </div>
                 {% endfor %}
 

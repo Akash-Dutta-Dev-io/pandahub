@@ -20,6 +20,11 @@
     padding: 10px 30px;
   }
 
+  .brand-img img{
+    height: 100%;
+    margin-top: 5px;
+}
+
   .action-btn{
     outline: none;
     border: 1px solid black;

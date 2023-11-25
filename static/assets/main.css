@@ -49,6 +49,71 @@ body{
     padding: 5px 0;
 }
 
+.upload, input, textarea{
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.upload-btn{
+    margin-top: -5px;
+}
+
+.upload{
+    background-color: blueviolet;
+    padding: 8px;
+    border-radius: 10px;
+}
+
+textarea{
+    background-color: transparent;
+}
+
+textarea::placeholder{
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: white;
+    padding-left: 5px;
+}
+
+
+
+.upload button{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin: 10px 0;
+    padding: 10px 20px;
+    border: 1px solid red;
+    border-radius: 15px;
+    background-color: cadetblue;
+    font-size:1rem ;
+    font-weight: bold;
+}
+
+.upload button:hover{
+    background-color: deepskyblue;
+    color: white;
+}
+
+.caption{
+    margin: 10px 0;
+    width: 100%;
+}
+
+.input-image{
+    margin: 5px 0 0 0;
+    padding: 10px 20px;
+}
+
+.nav-items {
+    display: flex;
+    /* align-items: center; */
+    justify-content: space-between;
+}
+
 .nav-wrapper{
     width: 90%;
     max-width: 1200px;
@@ -106,7 +171,7 @@ body{
     height: 46px;
     cursor: pointer;
     margin: 0 10px;
-    display: inline-block;
+    /* display: inline-block; */
 }
 
 .user-profile{
@@ -399,8 +464,28 @@ body{
         margin: 0 15.5%;
     }
 
+    .search-box{
+        width: 120px;
+    }
+
+    .upload-btn{
+        margin-left: 5px;
+        margin-right: 18px;
+    }
+
+    .user-profile{
+        margin-right: 20px;
+    }
+
+    .upload{
+        width: 100%;
+    }
+
+    .input-image{
+        width: 100%;
+    }
+
     .main{
         display: block;
-    
     }
 }

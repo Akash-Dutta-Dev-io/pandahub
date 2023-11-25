@@ -1,20 +1,33 @@
+{% extends 'main.html' %}
 {% load static %}
+
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Search User</title>
+    <link rel="stylesheet" href="{% static 'assets/main.css' %}">
+    {% block head %}
+    <link rel="stylesheet" href="{% static 'assets/search.css' %}">
+    {% endblock %}
 </head>
+
 <body>
+    {% block content %}
     <section>
         {% for users in username_profile_list %}
-        <img src="{{users.profileimg.url}}" >
-        <a href="/profile/{{users.user}}">@{{users.user}}</a>
-        <p>{{users.location}}</p>
-        <p>{{users.bio}}</p>
+        <img src="{{users.profileimg.url}}" class="pi">
+        <div class="details">
+            <a href="/profile/{{users.user}}">@ {{users.user}}</a>
+            <p>{{users.location}}</p>
+            <p>{{users.bio}}</p>
+        </div>
         {% endfor %}
     </section>
+    {% endblock %}
 </body>
+
 </html>

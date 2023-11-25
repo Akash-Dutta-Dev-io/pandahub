@@ -7,6 +7,11 @@ body{
     font-family: "poppins", 'sans-serif';
 }
 
+.about li {
+    display: flex;
+    justify-content: space-between;
+}
+
 ul{
     list-style-type: none;
     margin: 0;
@@ -21,7 +26,7 @@ a{
 
 .header_wrapper header{
     width: 100%;
-    min-height: calc(100px + 15vw);
+    min-height: calc(0px + 10vw);
 }
 
 .header_wrapper .cols_container .left_col{

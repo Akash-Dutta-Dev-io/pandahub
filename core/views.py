@@ -120,6 +120,9 @@ def profile(request, pk):
     user_posts = Post.objects.filter(user=pk)
     user_post_length = len(user_posts)
 
+    logged_user_object = User.objects.get(username=request.user.username)
+    logged_user_profile = Profile.objects.get(user=logged_user_object)
+
     follower = request.user.username
     user = pk
     
@@ -139,6 +142,7 @@ def profile(request, pk):
         'button_text': button_text,
         'user_followers': user_followers,
         'user_following': user_following,
+        "logged_user_profile":logged_user_profile,
     }
     
     return render(request, 'profile.html', context)

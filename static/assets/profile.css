@@ -25,6 +25,7 @@ a{
 }
 
 .header_wrapper header{
+    background-color: #2afa6a;
     width: 100%;
     min-height: calc(0px + 10vw);
 }

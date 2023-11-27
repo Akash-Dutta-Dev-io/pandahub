@@ -7,7 +7,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block title %}
     <title>Main</title>
+    {% endblock %}
     <link rel="stylesheet" href="{% static 'assets/main.css' %}">
     {% block head %}
 
@@ -24,7 +26,7 @@
                 <form action="/search" method="post">
                     {% csrf_token %}
                     <input type="text" name="username" class="search-box" placeholder="Search">
-                    <button type="submit">Search</button>
+                    <button type="submit" style="border: none; background-color: transparent; margin-left: -35px; margin-top: -5px;"><img src="{%static 'img/Searchicon.png' %}" style="height: 25px; cursor: pointer;"></button>
                 </form>
             </div>
             <div class="nav-items">
@@ -38,10 +40,12 @@
                         <button type="submit">Upload</button>
                     </div>
                 </form>
+                {% block profile %}
                 <div class="icon user-profile"><img src="{{user_profile.profileimg.url}}" style="width: 22px;
                     border-radius: 50%;
                     background-size: cover;" onclick="toggleD()">
-                    <div class="user-btn" id="user" style="display: none;">
+                    {% endblock %}
+                    <div class="user-btn" id="user" style="display: none; background-color: grey; border-radius: 20px; width: 400%; padding: 15px; margin: 0 0 0 -25px;">
                         &nbsp; &nbsp; <a href="/"
                             style="text-decoration: none; color: black; font-weight:bold ;">Home</a> &nbsp;
                         &nbsp; &nbsp; <a href="/settings"

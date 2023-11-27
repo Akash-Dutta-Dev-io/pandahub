@@ -170,7 +170,7 @@ textarea::placeholder{
 .icon{
     height: 46px;
     cursor: pointer;
-    margin: 0 10px;
+    margin: 0 5px 0 25px;
     /* display: inline-block; */
 }
 
@@ -438,7 +438,7 @@ textarea::placeholder{
 
 @media screen and (max-width: 500px) {
     .nav-items .icon{
-        margin: 0 5px;
+        margin: 0 26px 0 -10px;
     } 
 
      /* .post-image{

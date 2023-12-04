@@ -6,14 +6,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Settings</title>
     <link rel="stylesheet" href="{% static 'assets/settings.css' %}">
 </head>
 
 <body>
     <nav>
         <div class="nav">
-        <div class="brand">Logo</div>
+            <img src="{%static 'img/logo.png' %}" class="brand-img" style="height: 43px;">
+            <div class="brand"></div>
         
     </div>
     </nav>
@@ -37,16 +38,9 @@
             <label for="email">Enter Email/Phone</label>
             <input type="text" id="email" name="contact" value="{{user_profile.contact}}">
             <label for="bio">Enter Bio</label>
-            <!-- <input type="text" id="bio" placeholder="bio"> -->
             <textarea name="bio" id="bio" cols="30" rows="10">{{user_profile.bio}}</textarea>
             <label for="location">Enter Location</label>
             <input type="text" id="location" name="location" value="{{user_profile.location}}">
-            <!-- <select>
-                <option value="0">Relationship Status</option>
-                <option>Single</option>
-                <option>Committed</option>
-                <option>Married</option>
-            </select> -->
             <button type="submit">Submit</button>
         </div>
     </form>

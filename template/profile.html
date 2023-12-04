@@ -90,10 +90,7 @@
                 <nav>
                     <ul>
                         <li><a href="#">Photos</a></li>
-                        <!-- <li><a href="#">Galaries</a></li>
-                        <li><a href="#">Groups</a></li>
-                        <li><a href="#">About</a></li> -->
-                    </ul>
+                   </ul>
                     {% if user_object.username == user.username %}
                     <a href="/settings" data-ripple=""
                         style="border: 1px solid black; border-radius: 10px; padding: 10px 20px; background-color: violet; color: black; font-size: 1rem; ">Account
@@ -106,12 +103,6 @@
                 </nav>
                 </form>
                 <div class="photos">
-                    <!-- <img src="img/DSC_7691.JPG" alt="">
-                    <img src="img/DSC_7691.JPG" alt="">
-                    <img src="img/DSC_7691.JPG" alt="">
-                    <img src="img/DSC_7691.JPG" alt="">
-                    <img src="img/DSC_7691.JPG" alt="">
-                    <img src="img/DSC_7691.JPG" alt=""> -->
                     {% for post in user_posts %}
                     <img src="{{post.image.url}}" alt="">
                     {% endfor %}

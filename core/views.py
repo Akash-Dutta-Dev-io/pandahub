@@ -223,8 +223,6 @@ def signin(request):
         return render(request, "signin.html")
 
 def signup(request):
-    
-     
      if request.method == 'POST':
           username = request.POST['username']
           password = request.POST['password']
@@ -250,8 +248,7 @@ def signup(request):
           else:
               messages.info(request, 'Password Not Matching')
               return redirect('registration.html')
-     
-     
+      
      else:
           
       return render(request, "registration.html")
